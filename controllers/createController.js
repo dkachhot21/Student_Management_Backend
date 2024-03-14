@@ -13,13 +13,15 @@ const createStudent = asyncHandler(async (req, res) => {
 
     const studentRes = await Student.create(req.body);
     //Change the MongoDB return value to JSON to remove unwanted entries from displaying
-    let student=studentRes.toJSON();
+    let student = studentRes.toJSON();
     //Console log for getting the student ID for using get in Postman
-    const keysToRemove = ["_id", "createdAt", "updatedAt","__v"];
+    const keysToRemove = ["_id", "createdAt", "updatedAt", "__v"];
     keysToRemove.forEach((key) => {
         delete student[key];
     });
-
+    if (student.interests.length === 0) {
+        delete student.interests;
+    }
     res.status(constants.CREATED).json({ message: "Success", data: student });
 });
 
