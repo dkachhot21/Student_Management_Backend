@@ -6,20 +6,19 @@ const deleteStudent = require('../controllers/deleteController')
 
 /**
  * @swagger
- * /delete:
+ * /delete/{id}:
  *  delete:
  *      tags:
  *          - Student Management Application
  *      summary: "Deletes Students from database"
  *      description: "delete document from mongodb"
- *      requestBody:
- *          content:
- *              application/json:
- *                  schema:
- *                      type: object
- *                      properties:
- *                          _id:
- *                              type: string
+ *      parameters:
+ *          - in: path
+ *            Required: True
+ *            name: id
+ *            schema:
+ *              type: ObjectId
+ *            description: "numeric id of contact to update"
  *      produces:
  *          - application/json
  *      responses:
@@ -34,7 +33,7 @@ const deleteStudent = require('../controllers/deleteController')
  *                          "data": "Document Deleted Successfully"
  *
  */
-router.route('/').delete(deleteStudent);
+router.route('/:id').delete(deleteStudent);
 
 
 

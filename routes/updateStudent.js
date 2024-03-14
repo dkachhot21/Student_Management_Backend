@@ -4,20 +4,25 @@ const updateStudent = require('../controllers/updateController')
 
 /**
  * @swagger
- * /update:
+ * /update/{id}:
  *  patch:
  *      tags:
  *          - Student Management Application
  *      summary: "Update Student data in database"
  *      description: "updates document in mongodb"
+ *      parameters:
+ *          - in: path
+ *            Required: True
+ *            name: id
+ *            schema:
+ *              type: ObjectId
+ *            description: "numeric id of contact to update"
  *      requestBody:
  *          content:
  *              application/json:
  *                  schema:
  *                      type: object
  *                      properties:
- *                          _id:
- *                              type: string
  *                          name:
  *                              default: Jhon Doe
  *                              type: string
@@ -72,7 +77,7 @@ const updateStudent = require('../controllers/updateController')
  *                          "interests": ["ML", "WebDevelopment", "DataScience"]
  *
  */
-router.route('/').patch(updateStudent); //Function handled by the controller
+router.route('/:id').patch(updateStudent); //Function handled by the controller
 
 
 module.exports = router;
