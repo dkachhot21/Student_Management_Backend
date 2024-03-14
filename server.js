@@ -27,10 +27,10 @@ const swaggerOptions = {
                 url: 'http://localhost:3000/',
                 description: 'Local server',
             },
-            // {
-            //     url:'https://contact-manager-backend-api-b39f.onrender.com/',
-            //     description:'Render Deployment Server',
-            // }
+            {
+                url:'https://student-management-backend-k5ee.onrender.com/',
+                description:'Render Deployment Server',
+            }
         ],
     },
     apis: ['./routes/*.js'],
