@@ -7,13 +7,12 @@ const Student = require('../models/studentModel');
 //@router GET /get?id="studentId"
 //@access public
 
-const createStudent = asyncHandler(async (req, res) => {
+const getStudent = asyncHandler(async (req, res) => {
     const id = req.query.id;
 
     //Get all Students
     if (!id) {
-        const v=0;
-        const students = await Student.find({__v:v});
+        const students = await Student.find();
         res.status(constants.OK).json({
             data: students
         });
@@ -36,4 +35,4 @@ const createStudent = asyncHandler(async (req, res) => {
     }
 });
 
-module.exports = createStudent;
+module.exports = getStudent;
